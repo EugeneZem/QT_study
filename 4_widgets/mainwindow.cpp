@@ -44,7 +44,9 @@ void MainWindow::on_pb_progress1_valueChanged(int value)
     if (ui->pb_progress1->value() == ui->pb_progress1->maximum())
     {
         ui->b_button1->setText("&Сброс");
-//        ui->b_button1->setChecked(false);
+
+        ui->b_button1->setCheckable(true);
+      if (ui->b_button1->isCheckable()) ui->gb_progress->setTitle("checkable");
     }
     else
     {
