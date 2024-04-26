@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
-find_package(Qt6 REQUIRED COMPONENTS Widgets Core)
+find_package(Qt6 REQUIRED COMPONENTS Widgets Core Concurrent)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -28,7 +28,7 @@ qt_add_executable(Concurrent
 )
 
 target_link_libraries(Concurrent PRIVATE Qt6::Widgets
-                                            Qt6::Core)
+                                         Qt6::Core
+                                         Qt6::Concurrent)
 
 qt_finalize_executable(Concurrent)
-

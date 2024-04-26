@@ -68,7 +68,14 @@ MainWindow::MainWindow(QWidget *parent)
             ui->pb_start->setEnabled(true);
         }
     });
+
+    connect(&futW1, QFutureWatcher<void>::finished, this, [this]
+    {
+        QFuture<void> fut2 = QtConcurrent::run(ExampleRace::DoWork, concurRace1, &number, false, ui->sb_initNum->value());
+        futW2.setFuture(fut2);
+    });
 }
+
 
 MainWindow::~MainWindow()
 {
@@ -81,8 +88,12 @@ void MainWindow::StartRace(void){
 
     if(ui->rb_qtConcur->isChecked()){
 
-        ui->te_debug->append("Выполни ДЗ!");
+//        ui->te_debug->append("Выполни ДЗ!");
         //Тут должен быть код ДЗ
+
+        QFuture<void> fut1 = QtConcurrent::run(ExampleRace::DoWork, concurRace1, &number, false, ui->sb_initNum->value());
+        futW1.setFuture(fut1);
+
 
     }
     else{

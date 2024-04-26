@@ -35,6 +35,9 @@ private:
     ExampleRace *concurRace1;
     ExampleRace *concurRace2;
 
+    QFutureWatcher<void> futW1;
+    QFutureWatcher<void> futW2;
+
 };
 
 
